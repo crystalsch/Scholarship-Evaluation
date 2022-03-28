@@ -1,0 +1,45 @@
+<div id="task-box">
+    <mat-card *ngFor="let intern of interns">
+        <mat-card-content>
+            <p>Name:{{intern.name}}</p>
+            <p>Age:{{intern.age}}</p>
+            <p>Date Of Birth:{{intern.dateOfBirth}}</p>
+            <p>CNP: {{intern.id}}</p>
+        </mat-card-content>
+        <div id="buttons">
+            <button mat-button (click)="showForm(intern.id)">
+                Edit
+            </button>
+            <button mat-button (click)="getId(intern.id)">
+                Delete
+            </button>
+        </div>
+    </mat-card>
+
+    <div id="formular" *ngIf="this.show==='true'">
+        <h1>Update Intern </h1>
+        <label>Name:</label>
+        <form>
+            <mat-form-field>
+                <input required minlength="1" matInput name="name" [(ngModel)]="internEd.name" />
+            </mat-form-field>
+        
+    
+        <label>Age:</label>
+        <mat-form-field>
+            <input required minlength="1" matInput name="age" [(ngModel)]="internEd.age" />
+        </mat-form-field>
+    
+        <label>Date Of Birth:</label>
+        <mat-form-field>
+            <input required minlength="1" matInput name="dateE" [(ngModel)]="internEd.dateOfBirth"/>
+        </mat-form-field>
+    
+        <button mat-button (click)="editIntern()">Update</button>
+    </form>
+    </div>
+
+
+</div>
+
+

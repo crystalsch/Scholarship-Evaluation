@@ -1,0 +1,18 @@
+<h1>Add New Intern </h1>
+<label>Name:</label>
+<mat-form-field>
+    <input required minlength="1" matInput placeholder="Enter your Name" [(ngModel)]="name" />
+</mat-form-field>
+
+
+<label>Age:</label>
+<mat-form-field>
+    <input required minlength="1" matInput placeholder="Age" [(ngModel)]="age" />
+</mat-form-field>
+
+<label>Date Of Birth:</label>
+<mat-form-field>
+    <input required minlength="1" matInput placeholder="dd-mm-yyyy" [(ngModel)]="birthDate" />
+</mat-form-field>
+
+<button mat-button routerLink="app-parent" (click)="addIntern()">Add</button>
