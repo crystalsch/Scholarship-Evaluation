@@ -1,4 +1,4 @@
-import { Component, OnInit, SimpleChanges } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Intern } from 'src/app/intern';
 import { InternService } from '../service/intern.service';
 
@@ -7,7 +7,7 @@ import { InternService } from '../service/intern.service';
   templateUrl: './internal-box.component.html',
   styleUrls: ['./internal-box.component.scss']
 })
-export class InternalBoxComponent implements OnInit {
+export class InternalBoxComponent implements OnChanges {
 
   show: string;
   interns: Intern[];
@@ -33,7 +33,7 @@ export class InternalBoxComponent implements OnInit {
   editIntern() {
     this.show = "false";
     const intern: Intern = {
-      id:this.internEd.id,
+      id: this.internEd.id,
       name: this.internEd.name,
       age: this.internEd.age,
       dateOfBirth: this.internEd.dateOfBirth
@@ -44,6 +44,12 @@ export class InternalBoxComponent implements OnInit {
     });
   }
 
+  ngOnChanges(changes:SimpleChanges){
+    this.internService.serviceCall();
+    const allInterns = this.internService.getInterns().subscribe((intern: Intern[]) => {
+      this.interns = intern
+    });
+  }
 
   ngOnInit(): void {
     this.internService.serviceCall();
